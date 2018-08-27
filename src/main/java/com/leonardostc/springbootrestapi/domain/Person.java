@@ -19,10 +19,17 @@ public class Person {
     @Enumerated
     private Gender gender;
 
-    @OneToMany(mappedBy = "person")
-    private List<Address> addresses = new ArrayList<>();
+//    @OneToMany(mappedBy = "person")
+//    private List<Address> addresses = new ArrayList<>();
+//    private List<Address> addresses;
 
     public Person() {
+//        this.addresses = new ArrayList<>();
+    }
+
+    public Person(Long id){
+        this.id = id;
+//        this.addresses = new ArrayList<>();
     }
 
     public Person(String firstName, String lastName, LocalDate dateOfBirth, Gender gender) {
@@ -30,6 +37,7 @@ public class Person {
         this.lastName = lastName;
         this.dayOfBirth = dateOfBirth;
         this.gender = gender;
+//        this.addresses = new ArrayList<>();
     }
 
     public Long getId() {
@@ -72,11 +80,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
+//    public List<Address> getAddresses() {
+//        return addresses;
+//    }
+//
+//    public void setAddresses(List<Address> addresses) {
+//        this.addresses = addresses;
+//    }
 }

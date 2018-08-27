@@ -21,53 +21,53 @@ public class PersonController {
         return service.findAll();
     }
 
-    @RequestMapping(path = "/people/{orderingProperty}")
-    public List<Person> getAllPeople(@PathVariable String orderingProperty) {
+    @GetMapping(path = "/people/{orderingproperty}")
+    public List<Person> getAllPeople(@PathVariable(name = "orderingproperty") String orderingProperty) {
         return service.findAllOrderedBy(orderingProperty);
     }
 
-    @RequestMapping(path = "/person", method = RequestMethod.POST)
+    @PostMapping(path = "/person")
     public void addPerson(@RequestBody Person person){
         service.save(person);
     }
 
-    @RequestMapping(path = "/person", method = RequestMethod.PUT)
+    @PutMapping(path = "/person")
     public void updatePerson(@RequestBody Person person){
         service.save(person);
     }
 
-    @RequestMapping(path = "/person/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(path = "/person/{id}")
     public void deletePerson(@PathVariable Long id){
         service.deleteById(id);
     }
 
 
-    @RequestMapping(path = "/person/{id}")
+    @GetMapping(path = "/person/{id}")
     public Person getPersonById(@PathVariable Long id){
         return service.findById(id);
     }
 
-    @RequestMapping(path = "/peoplebyfirstname/{firstname}")
+    @GetMapping(path = "/peoplebyfirstname/{firstname}")
     public List<Person> getPeopleByFirstName(@PathVariable(name = "firstname") String firstName){
         return service.findByFirstName(firstName);
     }
 
-    @RequestMapping(path = "/peoplebylastname/{lastname}")
+    @GetMapping(path = "/peoplebylastname/{lastname}")
     public List<Person> getPeopleByLastName(@PathVariable(value = "lastname") String lastName){
         return service.findByLastName(lastName);
     }
 
-    @RequestMapping(path = "/peoplebygender/{gender}")
+    @GetMapping(path = "/peoplebygender/{gender}")
     public List<Person> getPeopleByGender(@PathVariable Gender gender){
         return service.findByGender(gender);
     }
 
-    @RequestMapping(path = "/peoplebydayofbirth/{dob}")
+    @GetMapping(path = "/peoplebydayofbirth/{dob}")
     public List<Person> getPeopleByDayOfBirth(@PathVariable(value = "dob") LocalDate dayOfBirth){
         return  service.findByDayOfBirth(dayOfBirth);
     }
 
-    @RequestMapping(path = "/peoplebyfirstnamecontaining/{firstname}")
+    @GetMapping(path = "/peoplebyfirstnamecontaining/{firstname}")
     public List<Person> getPeopleByFirstNameContaining(@PathVariable(name = "firstname") String firstName){
         return service.findByFirstNameContaining(firstName);
     }
